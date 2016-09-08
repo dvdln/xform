@@ -5,9 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.transform = transform;
 exports.createTransformer = createTransformer;
+/**
+ * @param {Object} template
+ * @param {Object} source
+ * @param {Map} data
+ * @returns {Object}
+ */
 function transform() {
   var template = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-  var object = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+  var source = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
   var data = arguments.length <= 2 || arguments[2] === undefined ? new Map() : arguments[2];
 
   var result = {};
@@ -21,11 +27,11 @@ function transform() {
       var key = _step.value;
 
       var node = template[key];
-      var value = object[key];
+      var value = source[key];
 
       var context = {
         template: template,
-        object: object
+        source: source
       };
 
       if (typeof node === 'function') {
@@ -52,9 +58,13 @@ function transform() {
   return result;
 }
 
-function createTransformer(tpl) {
-  return function (obj) {
-    return transform(tpl, obj);
+/**
+ * @param {Object} template
+ * @returns {Function}
+ */
+function createTransformer(template) {
+  return function (source) {
+    return transform(template, source);
   };
 }
 //# sourceMappingURL=xform.js.map
