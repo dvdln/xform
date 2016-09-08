@@ -2,9 +2,10 @@
   "name": "xform",
   "version": "1.0.0-beta.5",
   "description": "Transform objects from one structure to another",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && ava",
+    "build": "babel lib -d dist -s"
   },
   "repository": {
     "type": "git",
@@ -18,12 +19,24 @@
   "homepage": "https://github.com/dvdln/xform#readme",
   "devDependencies": {
     "ava": "^0.16.0",
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-register": "^6.14.0",
     "xo": "^0.16.0"
+  },
+  "dependencies": {
+    "babel": "^6.5.2",
+    "jsonpath": "^0.2.7"
   },
   "xo": {
     "space": true
   },
-  "dependencies": {
-    "jsonpath": "^0.2.7"
+  "ava": {
+    "require": "babel-register"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
   }
 }

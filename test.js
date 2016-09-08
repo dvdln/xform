@@ -1,5 +1,5 @@
 import test from 'ava';
-import xform from './index';
+import xform from './lib';
 
 test('Get value', t => {
   const example = xform({
