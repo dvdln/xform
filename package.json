@@ -4,7 +4,7 @@
   "description": "Transform objects from one structure to another",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "xo"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/dvdln/xform/issues"
   },
-  "homepage": "https://github.com/dvdln/xform#readme"
+  "homepage": "https://github.com/dvdln/xform#readme",
+  "devDependencies": {
+    "xo": "^0.16.0"
+  },
+  "xo": {
+    "space": true
+  }
 }
