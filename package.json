@@ -1,6 +1,6 @@
 {
   "name": "xform",
-  "version": "1.0.0-beta.9",
+  "version": "1.0.0",
   "description": "Transform objects from one structure to another",
   "main": "dist/index.js",
   "scripts": {
