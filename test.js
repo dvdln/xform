@@ -1,10 +1,29 @@
 import test from 'ava';
 import xform from './index';
 
-test('Transform works', t => {
+test('Get value', t => {
   const example = xform({
-    value: xform.value('x'),
-    defaultValue: xform.value('b'),
+    noDefault: xform.value(),
+    unusedDefault: xform.value('x'),
+    usedDefault: xform.value('c'),
+    undefDefault: xform.value()
+  });
+
+  const transformed = example({
+    noDefault: 'a',
+    unusedDefault: 'b'
+  });
+
+  t.deepEqual(transformed, {
+    noDefault: 'a',
+    unusedDefault: 'b',
+    usedDefault: 'c',
+    undefDefault: undefined
+  });
+});
+
+test('Memo and exclude', t => {
+  const example = xform({
     exclude: xform.exclude({
       deep: {
         value: xform.memo('deepValue')
@@ -14,7 +33,6 @@ test('Transform works', t => {
   });
 
   const transformed = example({
-    value: 'a',
     exclude: {
       deep: {
         value: 'c'
@@ -23,8 +41,6 @@ test('Transform works', t => {
   });
 
   t.deepEqual(transformed, {
-    value: 'a',
-    defaultValue: 'b',
     shallow: 'c'
   });
 });
