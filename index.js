@@ -1,6 +1,4 @@
-const xform = Object.assign(
+module.exports = Object.assign(
   require('./lib/xform'),
   require('./lib/parsers')
 );
-
-module.exports = xform;
