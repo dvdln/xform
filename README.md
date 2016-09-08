@@ -34,7 +34,7 @@ npm install xform --save
 Create an object parsing function by feeding a template object to `xform`:
 
 ```js
-var parser = xform(template)
+var parser = xform(template);
 ```
 
 The template is a plain object that represents the object structure you're expecting to receive.
@@ -43,7 +43,7 @@ Values are pulled from the source object through node-parsing methods on the tem
 ```js
 var template = {
   example: xform.value() // Copies value as-is
-}
+};
 ```
 
 The resulting parser is a function that accepts a source object and returns a transformed object:
@@ -51,13 +51,13 @@ The resulting parser is a function that accepts a source object and returns a tr
 ```js
 var template = {
   example: xform.value()
-}
+};
 
 const parser = xform(template);
 
 const transformed = parser({
   example: 'value'
-})
+});
 ```
 
 
@@ -72,7 +72,7 @@ function nodeParser(value, result, key) {
 
 var template = {
   example: nodeParser
-}
+};
 ```
 
 The `data` argument is a `Map` that's shared by every parser.
