@@ -22,5 +22,8 @@
   },
   "xo": {
     "space": true
+  },
+  "dependencies": {
+    "jsonpath": "^0.2.7"
   }
 }

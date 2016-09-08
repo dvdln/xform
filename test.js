@@ -44,3 +44,21 @@ test('Memo and exclude', t => {
     shallow: 'c'
   });
 });
+
+test('JSONPath', t => {
+  const example = xform({
+    root: xform.path('$.deep.value')
+  });
+
+  const transformed = example({
+    root: {
+      deep: {
+        value: 'a'
+      }
+    }
+  });
+
+  t.deepEqual(transformed, {
+    root: 'a'
+  });
+});
