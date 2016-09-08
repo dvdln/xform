@@ -3,13 +3,13 @@ Transform objects from one structure to another
 
 ## Example
 ```js
-const getDeep = Xform.Transformer({
-	foo: Xform.Exclude({
+const getDeep = xform({
+	foo: xform.exclude({
 		bar: {
-			baz: Xform.Memo('deep')
+			baz: xform.memo('deep')
 		}
 	}),
-	value: Xform.MemoValue('deep')
+	value: xform.memoValue('deep')
 });
 
 console.log(getDeep({
@@ -19,4 +19,6 @@ console.log(getDeep({
 		}
 	}
 }));
+
+// { value: 'deep value' }
 ```
