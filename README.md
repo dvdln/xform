@@ -5,7 +5,9 @@ Transform objects from one structure to another
 
 ## Example
 ```js
-const getDeep = xform({
+var xform = require('xform');
+
+var getDeep = xform({
   foo: xform.exclude({
     bar: {
       baz: xform.memo('deep')
