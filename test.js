@@ -62,3 +62,29 @@ test('JSONPath', t => {
     root: 'a'
   });
 });
+
+test('JSONPath subtemplates', t => {
+  const example = xform({
+    root: xform.path('$.deep.value', {
+      sub: xform.path('$.template')
+    })
+  });
+
+  const transformed = example({
+    root: {
+      deep: {
+        value: {
+          sub: {
+            template: 'a'
+          }
+        }
+      }
+    }
+  });
+
+  t.deepEqual(transformed, {
+    root: {
+      sub: 'a'
+    }
+  });
+});
