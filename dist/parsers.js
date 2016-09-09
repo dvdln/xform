@@ -54,10 +54,12 @@ var exclude = exports.exclude = function exclude(template) {
 
 /**
  * @param {string} pathExpression
+ * @param {Object} template
  */
-var path = exports.path = function path(pathExpression) {
-  return function (src, dest, key) {
-    dest[key] = _jsonpath2.default.value(src, pathExpression);
+var path = exports.path = function path(pathExpression, template) {
+  return function (src, dest, key, data) {
+    var value = _jsonpath2.default.value(src, pathExpression);
+    dest[key] = template ? (0, _xform.transform)(template, value, data) : value;
   };
 };
 //# sourceMappingURL=parsers.js.map
