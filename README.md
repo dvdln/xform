@@ -99,5 +99,6 @@ Returns value previously saved by `memo`.
 Continues parsing `template` but does nothing with the result.
 Really only useful if you're using something like `memo` in `template`.
 
-**xform.path(_expression_)**  
+**xform.path(_expression, [template]_)**  
 Performs a JSONPath query and returns the first value.
+Passing a second template will traverse the result.
